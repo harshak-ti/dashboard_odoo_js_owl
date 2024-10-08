@@ -1,0 +1,7 @@
+<odoo>
+    <!-- Inherit the default web layout -->
+    <template id="MyCustomNavbarLayout" inherit_id="web.NavBar" name="Conditional Custom Navbar">
+        <!-- Locate the div that contains the navbar/menu (use div or xpath) -->
+
+    </template>
+</odoo>

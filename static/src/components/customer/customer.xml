@@ -1,0 +1,93 @@
+<templates xml:space="preserve">
+  <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
+
+  <t t-name="my_module.PartnerCardViewTemplate">
+    <div class="partner-card-view">
+        <div style="display: flex;align-items: center;justify-content: space-between;">
+
+            <h1 style="margin-left: 2rem; margin-top: 1rem">Customers</h1>
+            <div style="display: flex;
+            align-items: center;
+            border: 1px solid gray;
+            padding: 0 .9rem;
+            border-radius: 2rem;
+            margin-right: 2rem;">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input type="text" placeholder="Type something" style="width: 21%;
+              border: none;
+                
+                padding: .4rem 1rem;
+                text-decoration: none;
+                
+                background: transparent;">
+            </input>
+            </div>
+
+        </div>
+      <div class="card-container">
+        <!-- Loop over the partner list and create a card for each -->
+        <t t-foreach="partners" t-as="partner" t-key="partner.id">
+          <div class="cards">
+            <div class="card_body">
+              <div class="card_img_conatiner">
+                <img
+                  t-att-src="'data:image/png;base64,' + partner.image_1920"
+                  style="
+                    text-align: center;
+                    border-radius: 50%;
+                    width: 40%;
+                    position: absolute;
+                    bottom: -28%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: #fff;
+                  "
+                />
+              </div>
+              <h5 class="card-title" style="margin-top: 3rem">
+                <t t-esc="partner.name" />
+              </h5>
+              <p class="card-text">
+                <t t-esc="partner.email" />
+                <br />
+                <t t-esc="partner.phone" />
+              </p>
+            </div>
+          </div>
+        </t>
+      </div>
+      <div class="pagination-controls">
+        <button
+          t-on-click="previousPage"
+          t-att-disabled="currentPage === 1"
+          class="pagination_btn"
+          style="margin-right: 1rem"
+        >
+          <i class="fa fa-angle-left"></i>
+        </button>
+        <h4 class="pagination_body">
+          Page
+          <span
+            style="
+              background-color: #294eb6;
+              padding: 0.3rem;
+              margin: 0.3rem;
+              color: #fff;
+            "
+          >
+            <t t-esc="currentPage" />
+          </span>
+          of <t t-esc="Math.ceil(totalItems / itemsPerPage)" />
+        </h4>
+        <button
+          t-on-click="nextPage"
+          t-att-disabled="currentPage * itemsPerPage >= totalItems"
+          class="pagination_btn"
+          style="margin-left: 1rem"
+        >
+          <i class="fa fa-angle-right"></i>
+        </button>
+      </div>
+    </div>
+  </t>
+</templates>

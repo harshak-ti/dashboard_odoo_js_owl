@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <t t-name="my_module.dashboard_template">
+
+        <!-- <NavBar>
+            <div>
+            </div>
+
+        </NavBar> -->
+        <Layout className="'o_dashboard h-100'">
+            <t t-set-slot="layout-buttons">
+                <!-- <button class="btn btn-primary" t-on-click="openCustomerView">Customers</button>
+                <button class="btn btn-primary" t-on-click="openLeads">Leads</button> -->
+            </t>
+
+
+            <!-- <Sidebar/> -->
+            <div class="dashboard_container">
+                <div class="text-container">
+                    <h1 class="heading md:heading-md">
+                    Discover <span class="gradient-text">Characters</span> in
+                    Pixi-World
+                    </h1>
+                    <p class="paragraph">
+                    We believe the world is more beautiful as each person gets better. We
+                    believe the world is more beautiful as each person gets better. Person
+                    gets better.{" "}
+                    </p>
+                    <button class="button" t-on-click="openCustomerView">Customers</button>
+                    <button class="button" t-on-click="openLeads">Leads</button>
+
+
+                </div>
+                <div class="image_conatiner">
+                    <img class="image" src="https://www.jemysto.com/assets/img/hero-img.png" alt="pixi-world" />
+                </div>
+            </div>
+
+        </Layout>
+
+    </t>
+
+</odoo>

@@ -1,0 +1,23 @@
+<odoo>
+    <t t-name="my_module.MyCustomNavbarTemplate">"
+        <nav class="o_web_navbar">
+            <ul class="o_nav_items">
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">About Us</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+            <div class="navbar-right">
+                <span>Welcome, User</span>
+            </div>
+        </nav>
+    </t>
+</odoo>
