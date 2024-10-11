@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <t t-name="my_module.auth_template">
+    <div
+      style="
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+      "
+    >
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          width: 30%;
+
+          align-items: center;
+          justify-content: center;
+          background: #f8f9fa;
+          padding: 2rem;
+          border: 1px solid #d5d3d3;
+          box-shadow: 1px 1px 10px -5px black;
+        "
+      >
+        <h2
+          style="
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+          "
+        >
+          <t t-esc="state.active" /> Form
+        </h2>
+        <div
+          style="
+            width: 100%;
+            margin-bottom: 1.7rem;
+            box-shadow: 2px 2px 9px -2px black;
+          "
+        >
+          <button
+            t-att-style="
+              'width: 50%;padding: 0.6rem;font-size: 1rem;font-weight: 700;text-transform: uppercase;letter-spacing: 1.3px;border: none;background: #e042a2;color: #fff;'
+              + (state.active == 'login' ?' background: #4170f4;
+              color: #fff;':'color:black;background:#f8f9fa;')
+            "
+            t-on-click="changeActiveToLogin"
+          >
+            Login
+          </button>
+          <button
+            t-att-style="
+              'width: 50%;
+              padding: 0.6rem;
+              font-size: 1rem;
+              font-weight: 700;
+              text-transform: uppercase;
+              letter-spacing: 1.3px;
+              border: none;
+              ' + (state.active == 'login'?'color:black;background:#f8f9fa;':' background: #4170f4;
+              color: #fff;')
+            "
+            t-on-click="changeActiveToSignup"
+          >
+            Signup
+          </button>
+        </div>
+        <!-- <input
+          type="text"
+          placeholder="Username"
+          style="
+            border: 1px solid #a8a8a8;
+            padding: 0.5rem 0.8rem;
+            margin-bottom: 1rem;
+            border-radius: 0.3rem;
+            background: #fff;
+            font-size: 1rem;
+            border: none;
+            box-shadow: 1px 1px 10px -6px black;
+          "
+        />
+        <input
+          type="text"
+          placeholder="Email Address"
+          style="
+            border: 1px solid #a8a8a8;
+            padding: 0.5rem 0.8rem;
+            margin-bottom: 1rem;
+            border-radius: 0.3rem;
+            background: #fff;
+            font-size: 1rem;
+            border: none;
+            box-shadow: 1px 1px 10px -6px black;
+          "
+        />
+        <input
+          type="text"
+          placeholder="Password "
+          style="
+            border: 1px solid #a8a8a8;
+            padding: 0.5rem 0.8rem;
+            margin-bottom: 1rem;
+            border-radius: 0.3rem;
+            background: #fff;
+            font-size: 1rem;
+            border: none;
+            box-shadow: 1px 1px 10px -6px black;
+          "
+        />
+        <input
+          type="text"
+          placeholder="Confirm Password"
+          style="
+            border: 1px solid #a8a8a8;
+            padding: 0.5rem 0.8rem;
+            margin-bottom: 1rem;
+            border-radius: 0.3rem;
+            background: #fff;
+            font-size: 1rem;
+            border: none;
+            box-shadow: 1px 1px 10px -6px black;
+          "
+        /> -->
+
+        <t t-if="state.active == 'login'">
+          <Login></Login>
+        </t>
+        <t t-else="">
+          <Signup></Signup>
+        </t>
+
+        <h6 style="margin-top: 1rem; font-size: 0.8rem; text-align: center">
+          <t t-if="state.active == 'login'">
+            Not a member?<span
+              style="margin: 0 0.3rem; color: #4170f4"
+              t-on-click="changeActiveToSignup"
+              >Signup </span
+            >now
+          </t>
+          <t t-else=""
+            >Already a member?<span
+              style="margin: 0 0.3rem; color: #4170f4"
+              t-on-click="changeActiveToLogin"
+              >Login </span
+            >now
+          </t>
+        </h6>
+      </div>
+    </div>
+  </t>
+</odoo>

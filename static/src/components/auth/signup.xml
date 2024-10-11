@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <t t-name="my_module.SignUpTemplate">
+
+    <input type="text" name=
+    "name" t-on-change="handleInputChange" placeholder="Username" style="
+            border: 1px solid #a8a8a8;
+            padding: 0.5rem 0.8rem;
+            margin-bottom: 1rem;
+            border-radius: 0.3rem;
+            background: #fff;
+            font-size: 1rem;
+            border: none;
+            box-shadow: 1px 1px 10px -6px black;
+          " />
+    <input type="text" name=
+    "email" t-on-change="handleInputChange" placeholder="Email Address" style="
+            border: 1px solid #a8a8a8;
+            padding: 0.5rem 0.8rem;
+            margin-bottom: 1rem;
+            border-radius: 0.3rem;
+            background: #fff;
+            font-size: 1rem;
+            border: none;
+            box-shadow: 1px 1px 10px -6px black;
+          " />
+    <input type="text" name=
+    "password" t-on-change="handleInputChange" placeholder="Password " style="
+            border: 1px solid #a8a8a8;
+            padding: 0.5rem 0.8rem;
+            margin-bottom: 1rem;
+            border-radius: 0.3rem;
+            background: #fff;
+            font-size: 1rem;
+            border: none;
+            box-shadow: 1px 1px 10px -6px black;
+          " />
+    <input type="text" name=
+    "confirmpassword" t-on-change="handleInputChange" placeholder="Confirm Password" style="
+            border: 1px solid #a8a8a8;
+            padding: 0.5rem 0.8rem;
+            margin-bottom: 1rem;
+            border-radius: 0.3rem;
+            background: #fff;
+            font-size: 1rem;
+            border: none;
+            box-shadow: 1px 1px 10px -6px black;
+          " />
+
+    <button style="
+            width: 100%;
+            padding: 0.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            background: #4170f4;
+            color: #fff;
+            border: none;
+            border: none;
+            box-shadow: 1px 1px 10px -6px black;
+          " t-on-click="handleSignUp ">
+          SignUp
+    </button>
+
+
+  </t>
+</odoo>

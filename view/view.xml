@@ -19,5 +19,22 @@
         <field name="name">Contacts Card View</field>
         <field name="tag">my_module.partner_card_view</field>
     </record>
+
     <menuitem id="menu_contacts_card_view" name="Customer" sequence="20" action="action_contacts_card_view" parent="my_module_menu"/>
+
+    <record id="auth_action" model="ir.actions.client">
+        <field name="name">Auth</field>
+        <field name="tag">my_module.auth</field>
+    </record>
+    <menuitem id="menu_auth" name="Auth" sequence="20" action="auth_action" parent="my_module_menu"/>
+
+    <record id="sale_fetch_action" model="ir.actions.client">
+        <field name="name">Sale Fetch</field>
+        <field name="tag">my_module.sale_search</field>
+    </record>
+    <menuitem id="menu_sale_search" name="Customer Sales" sequence="20" action="sale_fetch_action" parent="my_module_menu"/>
+
+
+
+
 </odoo>

@@ -1,2 +1,2 @@
 from . import customer
-# from . import auth
+from . import auth

@@ -13,7 +13,7 @@
             border-radius: 2rem;
             margin-right: 2rem;">
                 <i class="fa fa-search" aria-hidden="true"></i>
-                <input type="text" placeholder="Type something" style="width: 21%;
+                <input type="text" placeholder="Type something" style="
               border: none;
                 
                 padding: .4rem 1rem;

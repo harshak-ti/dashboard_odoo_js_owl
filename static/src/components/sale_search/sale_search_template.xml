@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <t t-name="my_module.sale_search_template">
+    <div style="display: flex; flex-direction: column; padding: 2rem">
+      <h1 style="margin-bottom: 2rem">Customer Sales</h1>
+
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 1.5rem;
+        "
+      >
+        <input
+          type="text"
+          name="customer"
+          placeholder="Enter Customer Name"
+          t-on-change="handleInputChange"
+          style="
+            width: 25%;
+            padding: 0.7rem 1rem;
+            border: 0.5px solid #ccc;
+            box-shadow: 2px 2px 6px -4px black;
+            border-radius: 2rem;
+            background: transparent;
+            font-size: 0.95rem;
+          "
+        />
+        <button
+          t-on-click="fetchSalesRecord"
+          style="
+            border: none;
+            padding: 1rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: bolder;
+            background: #4170f4;
+            color: #fff;
+          "
+        >
+          Fetch Records
+        </button>
+      </div>
+
+      <div
+        style="
+          width: 80%;
+
+          margin: 0 auto;
+          margin-top: 0px;
+          margin-top: 1rem;
+          padding: 1rem;
+          display: grid;
+          grid-template-columns: repeat(9, 1fr);
+        "
+      >
+        <t t-if="state.salesRecord">
+          <t t-foreach="state.salesRecord" t-as="rec" t-key="rec.id">
+            <div
+              style="
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+              t-on-click.prevent="()=>fetchRecord(rec.id)"
+            >
+              <h4
+                t-esc="rec.name"
+                t-att-style="'padding: 0.6rem 1.2rem;border-radius: 2rem;font-weight: 500;border: 1px solid #ccc;box-shadow: 1px 1px 8px -2px black;font-size: 1rem;' + (state.record?(state.record.id==rec.id?'color: #fbfbfbcc;
+                background: #424242;
+                font-size: 1.4rem;':''):'')"
+              />
+            </div>
+          </t>
+        </t>
+      </div>
+      <t t-if="state.record">
+        <div
+          style="
+            width: 80%;
+            margin: 1rem auto;
+            display: flex;
+            justify-content: space-between;
+          "
+        >
+          <div style="">
+            <h3 t-esc="state.record.name"></h3>
+            <h4 style="margin-top: 2rem; color: #8e8e8e">
+              Order Date :
+              <span
+                style="
+                  color: #000000d6;
+                  font-size: 0.9rem;
+                  font-weight: bolder;
+                  margin-left: 1rem;
+                "
+                t-esc="state.record.date_order"
+              ></span>
+            </h4>
+          </div>
+          <div
+            style="
+              width: 66%;
+              box-shadow: 2px 2px 15px -6px black;
+              padding: 1rem 2rem;
+            "
+          >
+            <table style="width: 100%">
+              <thead>
+                <tr style="background: #e8e8e8">
+                  <th style="padding: 0.7rem; font-weight: bold">Product</th>
+                  <th style="padding: 0.7rem; font-weight: bold">Quantity</th>
+                  <th style="padding: 0.7rem; font-weight: bold">Unit Price</th>
+                  <th style="padding: 0.7rem; font-weight: bold">
+                    Tax Excluded
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  t-foreach="state.record.order_lines_details"
+                  t-as="o"
+                  t-key="o.id"
+                >
+                  <td
+                    style="padding: 0.8rem"
+                    t-esc="o.product_template_id"
+                  ></td>
+                  <td
+                    style="padding: 0.8rem; text-align: center"
+                    t-esc="o.product_uom_qty"
+                  ></td>
+                  <td
+                    style="padding: 0.8rem; text-align: center"
+                    t-esc="o.price_unit"
+                  ></td>
+                  <td
+                    style="padding: 0.8rem; text-align: right"
+                    t-esc="o.price_subtotal"
+                  ></td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="margin-top: 1rem">
+              <div
+                style="display: flex; align-items: center; justify-content: end"
+              >
+                <h5 style="color: #8a8a8a; font-weight: 300">
+                  Untaxed Amount:
+                </h5>
+                <h4
+                  style="font-size: 1rem; margin-left: 1rem"
+                  t-esc="state.record.amount_untaxed"
+                />
+              </div>
+              <div
+                style="display: flex; align-items: center; justify-content: end"
+              >
+                <h5 style="color: #8a8a8a; font-weight: 300">Tax 15%:</h5>
+                <h4
+                  t-esc="state.record.amount_tax"
+                  style="
+                    color: #312c2c;
+                    font-weight: 400;
+                    font-size: 0.9rem;
+                    margin-left: 4.6rem;
+                  "
+                />
+              </div>
+              <div
+                style="display: flex; align-items: center; justify-content: end"
+              >
+                <h5 style="color: #8a8a8a; font-weight: 300">Total:</h5>
+                <h4
+                  t-esc="state.record.amount_total"
+                  style="
+                    font-size: 1.4rem;
+                    margin-left: 2rem;
+                    font-weight: 700;
+                    border-top: 1px solid #a8a8a8;
+                    padding-left: 2rem;
+                  "
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </t>
+    </div>
+  </t>
+</odoo>
