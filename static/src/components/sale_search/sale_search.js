@@ -20,12 +20,12 @@ class Sale_Search extends Component{
         if(this.state.customerName){
             this.state.salesRecord= await this.orm.searchRead(
                 'sale.order',               
-                [['partner_id.name', '=', this.state.customerName]],  
+                [['partner_id.name', 'ilike', this.state.customerName.trim()]],  
                     ['name', 'amount_total'],              
                     
             );
             console.log(this.state.salesRecord)
-            
+            if(this.state.salesRecord)
             this.fetchRecord(this.state.salesRecord[0].id);
                    
             this.render();

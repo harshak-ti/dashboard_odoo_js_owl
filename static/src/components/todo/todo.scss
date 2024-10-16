@@ -1,0 +1,18 @@
+.record_container{
+    text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.o_web_client{
+    overflow: auto !important;
+}
+.o_action_manager{
+    overflow: auto !important;
+}
+.task_item:hover{
+    background: #c1c1c11c;
+}
+.task_title_input::after{
+    border: 2px solid #fff !important;
+}

@@ -35,6 +35,12 @@
     <menuitem id="menu_sale_search" name="Customer Sales" sequence="20" action="sale_fetch_action" parent="my_module_menu"/>
 
 
+    <record id="action_todo" model="ir.actions.client">
+        <field name="name">Todo List</field>
+        <field name="tag">my_module.todo_action</field>
+    </record>
 
+    <menuitem id="menu_todo_root" name="Todo" sequence="50" parent="my_module_menu"/>
+    <menuitem id="menu_todo_list" name="Todo List" parent="menu_todo_root" action="action_todo"/>
 
 </odoo>

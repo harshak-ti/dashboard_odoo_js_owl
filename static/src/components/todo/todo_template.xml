@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <t t-name="my_module.todo_template">
+    <div class="todo-container" style="width: 100%; height: 100%; border: 1px solid; display: flex">
+      <div class="todo-left-sidebar" style="
+          width: 20%;
+          height: 100%;
+          background-color: #252525;
+          padding: 1rem 2rem;
+        ">
+        <h2 style="color: #fff; font-size: 1.6rem">
+          <i class="fa fa-bolt"></i> TaskMinder
+        </h2>
+      </div>
+      <div class="todo-app" style="
+          width: 54%;
+          height: 100%;
+          background-color: #131313;
+          padding: 2rem;
+        ">
+        <h1 style="color: #dbdbdb; font-size: 3rem; font-weight: 700">
+          Good Afternoon.
+        </h1>
+        <h1 style="
+            color: #898989;
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 0.6;
+          ">
+          What's your plan for today?
+        </h1>
+        <div class="add-task" style="margin-top: 3rem">
+          <t t-if="!state.addTaskDisplay">
+            <button t-on-click="addTaskComponent" style="
+                padding: 0.5rem 1.5rem;
+                font-size: 1rem;
+                background: #252525;
+                border: none;
+                color: #898989;
+              ">
+              Add Task
+            </button>
+          </t>
+          <t t-else="">
+            <div style="
+                width: 100%;
+
+                padding: 1rem 2rem;
+                background: #252525;
+                border-radius: 0.8rem;
+              ">
+              <div style="display: flex; align-items: center">
+                <h5 style="color: #fff; line-height: 1; margin-bottom: 0">
+                  Title
+                </h5>
+                <input type="text" class="task_title_input" t-model="state.newTaskName" placeholder="Enter new task" style="
+                    width: 50%;
+                    background: transparent;
+                    border: none;
+                    margin-left: 2rem;
+                    color: #fff;
+                  " />
+              </div>
+              <div style="display: flex; align-items: center; margin-top: 1rem">
+                <h5 style="color: #fff; line-height: 1; margin-bottom: 0">
+                  Date
+                </h5>
+                <input type="date" t-model="state.date" style="
+                    width: 42%;
+                    background: transparent;
+                    border: none;
+                    margin-left: 2rem;
+                    color: #fff;
+                  " />
+              </div>
+              <div style="display: flex; align-items: center; margin-top: 1rem">
+                <h5 style="color: #fff; line-height: 1; margin-bottom: 0">
+                  Priority
+                </h5>
+                <select name="priority" t-model="state.priority" style="
+                    width: 40%;
+                    margin-left: 1.3rem;
+                    padding: 0.5rem 0.7rem;
+                    border-radius: 0.4rem;
+                  ">
+                  <option value="0">Low</option>
+                  <option value="1">Medium</option>
+                  <option value="2">High</option>
+                </select>
+              </div>
+              <div style="margin-top: 2rem">
+                <button t-on-click="addTask" style="
+                    padding: 0.5rem 1.5rem;
+                    font-size: 0.9rem;
+                    background: #131313;
+                    border: none;
+                    color: #ffffffa6;
+                    margin-right: 2rem;
+                    border-radius: 0.7rem;
+                  ">
+                  Save
+                </button>
+
+                <button t-on-click="addTaskComponent" style="
+                    padding: 0.5rem 1.5rem;
+                    font-size: 0.9rem;
+                    background: #131313;
+                    border: none;
+                    color: #ffffffa6;
+                    border-radius: 0.7rem;
+                  ">
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </t>
+        </div>
+        <ul style="list-style: none; margin-top: 2rem">
+          <li class="task_item" t-foreach="state.tasks" t-as="task" t-key="task.id" style="
+              width: 100%;
+              padding: 1.2rem 1rem;
+              padding-left: 1rem;
+              margin: 1rem 0;
+              color: #fff;
+              display: flex;
+              padding-left: 2rem;
+              border-radius: 0.4rem;
+              align-items: center;
+              box-shadow: 0px 1px 7px -2px #fff;
+            ">
+            <input type="checkbox" t-att-checked="task.is_done" t-on-click.prevent="()=>toggleTaskStatus(task.id, task.is_done)" style="border: none; cursor: pointer" />
+            <div style="width: 100%; margin-left: 1rem">
+              <h5 t-esc="task.name" t-att-class="{done: task.is_done}" style="font-size: 1.2rem; color: #fff" />
+              <div style="display: flex">
+                <p style="
+                    margin: 0 !important;
+
+                    color: gray;
+                    font-size: 0.8rem;
+                  " t-esc="task.date"></p>
+                <p style="
+                    margin: 0 !important;
+                    margin-left: 0px;
+                    color: gray;
+                    font-size: 0.8rem;
+
+                    width: fit-content;
+                    padding: 0.1rem 3rem;
+                    border-radius: 3rem;
+                    color: #fff;
+                    background: #252525;
+                    margin-left: 1rem !important;
+                  ">
+                  <t t-if="task.priority==0">
+                  Low
+                  </t>
+                  <t t-elif="task.priority==1">
+                  Medium
+                  </t>
+                  <t t-else="">
+                  High
+                  </t>
+                </p>
+              </div>
+            </div>
+            <i class="fa fa-trash" style="color: gray; font-size: 1rem; cursor: pointer" t-on-click="()=>deleteTask(task.id)" />
+          </li>
+        </ul>
+      </div>
+      <div class="todo-right-sidebar" style="width: 26%; height: 100%; background-color: #252525"></div>
+    </div>
+  </t>
+</odoo>
